@@ -6,6 +6,9 @@ import java.util.Iterator;
 
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * A Crowd is a collection of people
+ */
 public class Crowd 
 {
 	/**

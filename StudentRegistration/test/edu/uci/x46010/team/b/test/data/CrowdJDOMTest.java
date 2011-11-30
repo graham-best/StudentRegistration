@@ -132,6 +132,8 @@ public class CrowdJDOMTest extends TestCase
 	/**
 	 * Use the Jaxen library to change all of the people matching the last name of 'Doe' to 'Smith' in a XML file.
 	 */
+	// Here for reference, but not needed.
+	/*
 	public void testChangeLastName()
 	{
 		CrowdJDOM crowdJDOM = new CrowdJDOM();
@@ -144,21 +146,5 @@ public class CrowdJDOMTest extends TestCase
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * Change all of the people matching the last name of 'Doe' to 'Smith' in a XML file without the Jaxen
-	 * library.
-	 */
-	public void testChangeLastNameWithoutJaxen()
-	{
-		CrowdJDOM crowdJDOM = new CrowdJDOM();
-		try 
-		{
-			crowdJDOM.changeLastNameWithoutJaxen("data\\crowd.xml", "Doe", "Smith");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
+	*/
 }

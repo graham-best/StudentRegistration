@@ -21,22 +21,8 @@ import edu.uci.x46010.team.b.app.middle.Crowd;
 import edu.uci.x46010.team.b.app.middle.Person;
 import edu.uci.x46010.team.b.app.middle.Person.Gender;
 
-
 public class CrowdJDOM 
 {
-	/**
-	 * XML Tags from the crowd.xml file
-	 */
-	private final String CROWD_TAG = "crowd";
-	private final String PERSON_TAG = "person";
-	private final String FIRST_NAME_TAG = "first_name";
-	private final String LAST_NAME_TAG = "last_name";
-	private final String GENDER_TAG = "gender";
-	private final String SOCIAL_SECURITY_NUMBER_TAG = "social_security_number";
-	private final String BIRTH_YEAR_TAG = "birth_date_year";
-	private final String BIRTH_MONTH_TAG = "birth_date_month";
-	private final String BIRTH_DAY_TAG = "birth_date_day";
-	
 	/**
 	 * Read in a XML file and return a Crowd object.
 	 * Heavily modified from the following website:
@@ -63,7 +49,7 @@ public class CrowdJDOM
 			
 			// Get a list of all of the <person> elements under the <crowd>.
 			@SuppressWarnings("unchecked")
-			List<Element> personList = rootNode.getChildren(PERSON_TAG);
+			List<Element> personList = rootNode.getChildren(CrowdTags.PERSON_TAG);
 			
 			// Create a Crowd object as we've been successful parsing the XML elements.
 			crowd = new Crowd();
@@ -76,16 +62,16 @@ public class CrowdJDOM
 				
 				// Get the person's birth date.
 				GregorianCalendar birthDate;
-				birthDate=CalendarUtils.createGregorianCalendar(personNode.getChildText(BIRTH_YEAR_TAG),
-						                                        personNode.getChildText(BIRTH_MONTH_TAG),
-						                                        personNode.getChildText(BIRTH_DAY_TAG));
+				birthDate=CalendarUtils.createGregorianCalendar(personNode.getChildText(CrowdTags.BIRTH_YEAR_TAG),
+						                                        personNode.getChildText(CrowdTags.BIRTH_MONTH_TAG),
+						                                        personNode.getChildText(CrowdTags.BIRTH_DAY_TAG));
 				
 				// Create a new person.
 				Person newPerson; 
-				newPerson =	new Person(personNode.getChildText(FIRST_NAME_TAG),
-				                       personNode.getChildText(LAST_NAME_TAG),
-				                       Gender.convertStringToGender(personNode.getChildText(GENDER_TAG)),
-				                       personNode.getChildText(SOCIAL_SECURITY_NUMBER_TAG),
+				newPerson =	new Person(personNode.getChildText(CrowdTags.FIRST_NAME_TAG),
+				                       personNode.getChildText(CrowdTags.LAST_NAME_TAG),
+				                       Gender.convertStringToGender(personNode.getChildText(CrowdTags.GENDER_TAG)),
+				                       personNode.getChildText(CrowdTags.SOCIAL_SECURITY_NUMBER_TAG),
 				                       birthDate);
 				
 				// Add the new person to the crowd.
@@ -117,7 +103,7 @@ public class CrowdJDOM
 		try
 		{
 			// Create the root node of the Document tree.
-			Element crowdElement = new Element(CROWD_TAG);
+			Element crowdElement = new Element(CrowdTags.CROWD_TAG);
 	
 			// Build a JDOM Document from the XML file. Make the crowd the root element.
 			Document document = new Document (crowdElement);
@@ -129,14 +115,14 @@ public class CrowdJDOM
 				GregorianCalendar birthDate = person.getBirthDate();
 				
 				// Copy the information from the Person object to the <person> element.
-				Element personElement = new Element(PERSON_TAG);
-				personElement.addContent(new Element(FIRST_NAME_TAG).setText(person.getFirstName()));
-				personElement.addContent(new Element(LAST_NAME_TAG).setText(person.getLastName()));
-				personElement.addContent(new Element(GENDER_TAG).setText(Gender.convertGenderToString(person.getGender())));
-				personElement.addContent(new Element(SOCIAL_SECURITY_NUMBER_TAG).setText(person.getSSN()));
-				personElement.addContent(new Element(BIRTH_YEAR_TAG).setText(CalendarUtils.convertToYearString(birthDate)));
-				personElement.addContent(new Element(BIRTH_MONTH_TAG).setText(CalendarUtils.convertToMonthString(birthDate)));
-				personElement.addContent(new Element(BIRTH_DAY_TAG).setText(CalendarUtils.convertToDayOfMonthString(birthDate)));
+				Element personElement = new Element(CrowdTags.PERSON_TAG);
+				personElement.addContent(new Element(CrowdTags.FIRST_NAME_TAG).setText(person.getFirstName()));
+				personElement.addContent(new Element(CrowdTags.LAST_NAME_TAG).setText(person.getLastName()));
+				personElement.addContent(new Element(CrowdTags.GENDER_TAG).setText(Gender.convertGenderToString(person.getGender())));
+				personElement.addContent(new Element(CrowdTags.SOCIAL_SECURITY_NUMBER_TAG).setText(person.getSSN()));
+				personElement.addContent(new Element(CrowdTags.BIRTH_YEAR_TAG).setText(CalendarUtils.convertToYearString(birthDate)));
+				personElement.addContent(new Element(CrowdTags.BIRTH_MONTH_TAG).setText(CalendarUtils.convertToMonthString(birthDate)));
+				personElement.addContent(new Element(CrowdTags.BIRTH_DAY_TAG).setText(CalendarUtils.convertToDayOfMonthString(birthDate)));
 			
 				// Add the <person> information to the document tree.
 				document.getRootElement().addContent(personElement);
@@ -234,8 +220,8 @@ public class CrowdJDOM
 	
 	
 	public void changeLastName(String xmlFileName, 
-			            String matchingLastName, 
-			            String changeToLastName) throws Exception
+			                   String matchingLastName, 
+			                   String changeToLastName) throws Exception
 	{
 		try
 		{
@@ -264,41 +250,6 @@ public class CrowdJDOM
 			
 			// Write the XML file.
 			xmlOutput.output(document, new FileWriter(xmlFileName));
-		}
-		catch (IOException io)
-		{
-			throw new IOException(io.getMessage());
-		}
-		catch (JDOMException jdomex)
-		{
-			throw new JDOMException(jdomex.getMessage());
-		}
-	}
-
-	public void changeLastNameWithoutJaxen(String xmlFileName, 
-			                        String matchingLastName, 
-			                        String changeToLastName) throws Exception
-	{
-		Crowd crowd = null;
-		
-		try
-		{
-			// Read the XML file.
-			crowd = readXMLFile(xmlFileName);
-			
-			// Go through each of the person objects.
-			ArrayList<Person> personList = crowd.getPersonList();
-			
-			for (Person person : personList)
-			{
-				if (person.getLastName().equals(matchingLastName))
-				{
-					//person.setLastName(changeToLastName);
-				}
-			}
-		
-			// Write the XML file.
-			writeXMLFile(xmlFileName, crowd);
 		}
 		catch (IOException io)
 		{

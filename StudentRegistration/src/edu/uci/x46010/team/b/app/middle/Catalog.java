@@ -2,6 +2,9 @@ package edu.uci.x46010.team.b.app.middle;
 
 import java.util.ArrayList;
 
+/**
+ * A Catalog is more than one course
+ */
 public class Catalog 
 {
 	/**
