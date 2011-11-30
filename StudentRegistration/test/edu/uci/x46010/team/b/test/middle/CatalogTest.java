@@ -4,5 +4,5 @@ import junit.framework.TestCase;
 
 public class CatalogTest extends TestCase 
 {
-	// TODO: Finish test for Catalog object.
+	// TODO: Add test cases for Catalog object.
 }
