@@ -1,4 +1,4 @@
-package edu.uci.x46010.team.b.app;
+package edu.uci.x46010.team.b.app.helper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

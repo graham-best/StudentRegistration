@@ -1,4 +1,4 @@
-package edu.uci.x46010.team.b.app;
+package edu.uci.x46010.team.b.app.middle;
 
 import java.util.ArrayList;
 import java.util.Collections;

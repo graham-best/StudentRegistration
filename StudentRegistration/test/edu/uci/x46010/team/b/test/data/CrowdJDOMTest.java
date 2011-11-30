@@ -1,7 +1,7 @@
-package edu.uci.x46010.team.b.app;
+package edu.uci.x46010.team.b.test.data;
 
-import edu.uci.x46010.team.b.app.Crowd;
-import edu.uci.x46010.team.b.app.CrowdJDOM;
+import edu.uci.x46010.team.b.app.data.CrowdJDOM;
+import edu.uci.x46010.team.b.app.middle.Crowd;
 import junit.framework.TestCase;
 
 public class CrowdJDOMTest extends TestCase 

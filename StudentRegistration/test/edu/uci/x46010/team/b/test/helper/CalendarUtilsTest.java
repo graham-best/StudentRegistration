@@ -1,9 +1,9 @@
-package edu.uci.x46010.team.b.app;
+package edu.uci.x46010.team.b.test.helper;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import edu.uci.x46010.team.b.app.CalendarUtils;
+import edu.uci.x46010.team.b.app.helper.CalendarUtils;
 
 import junit.framework.TestCase;
 

@@ -1,4 +1,4 @@
-package edu.uci.x46010.team.b.app;
+package edu.uci.x46010.team.b.app.data;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -16,7 +16,10 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.jdom.xpath.XPath;
 
-import edu.uci.x46010.team.b.app.Person.Gender;
+import edu.uci.x46010.team.b.app.helper.CalendarUtils;
+import edu.uci.x46010.team.b.app.middle.Crowd;
+import edu.uci.x46010.team.b.app.middle.Person;
+import edu.uci.x46010.team.b.app.middle.Person.Gender;
 
 
 public class CrowdJDOM 
@@ -109,7 +112,7 @@ public class CrowdJDOM
 	 * @param crowd
 	 * @throws Exception
 	 */
-	void writeXMLFile (String xmlFileName, Crowd crowd) throws Exception
+	public void writeXMLFile (String xmlFileName, Crowd crowd) throws Exception
 	{
 		try
 		{
@@ -161,7 +164,7 @@ public class CrowdJDOM
 	 * @return The number of <person> elements that match the last name.
 	 * @throws Exception
 	 */
-	int countLastName(String xmlFileName, String matchingLastName) throws Exception
+	public int countLastName(String xmlFileName, String matchingLastName) throws Exception
 	{
 		int count = 0;
 		
@@ -199,7 +202,7 @@ public class CrowdJDOM
 	 * @return The number of <person> elements that match the last name.
 	 * @throws Exception
 	 */
-	int countLastNameWithoutJaxen(String xmlFileName, String matchingLastName) throws Exception
+	public int countLastNameWithoutJaxen(String xmlFileName, String matchingLastName) throws Exception
 	{
 		int count = 0;
 		Crowd crowd = null;
@@ -230,7 +233,7 @@ public class CrowdJDOM
 	}
 	
 	
-	void changeLastName(String xmlFileName, 
+	public void changeLastName(String xmlFileName, 
 			            String matchingLastName, 
 			            String changeToLastName) throws Exception
 	{
@@ -249,8 +252,8 @@ public class CrowdJDOM
 			Iterator<Element> iter=elementList.iterator();
 			while(iter.hasNext()) 
 			{
-			    Element element = (Element) iter.next();
-			    element.setText(changeToLastName);
+			    //Element element = (Element) iter.next();
+			    //element.setText(changeToLastName);
 			}
 			
 			// Create a class to write the XML data.
@@ -272,7 +275,7 @@ public class CrowdJDOM
 		}
 	}
 
-	void changeLastNameWithoutJaxen(String xmlFileName, 
+	public void changeLastNameWithoutJaxen(String xmlFileName, 
 			                        String matchingLastName, 
 			                        String changeToLastName) throws Exception
 	{
@@ -290,7 +293,7 @@ public class CrowdJDOM
 			{
 				if (person.getLastName().equals(matchingLastName))
 				{
-					person.setLastName(changeToLastName);
+					//person.setLastName(changeToLastName);
 				}
 			}
 		

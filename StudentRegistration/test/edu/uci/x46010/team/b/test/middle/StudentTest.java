@@ -1,6 +1,6 @@
-package edu.uci.x46010.team.b.app;
+package edu.uci.x46010.team.b.test.middle;
 
-import edu.uci.x46010.team.b.app.Student;
+import edu.uci.x46010.team.b.app.middle.Student;
 import junit.framework.TestCase;
 
 public class StudentTest extends TestCase 

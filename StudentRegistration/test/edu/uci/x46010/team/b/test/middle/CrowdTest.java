@@ -1,12 +1,12 @@
-package edu.uci.x46010.team.b.app;
+package edu.uci.x46010.team.b.test.middle;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import edu.uci.x46010.team.b.app.CalendarUtils;
-import edu.uci.x46010.team.b.app.Crowd;
-import edu.uci.x46010.team.b.app.Person;
-import edu.uci.x46010.team.b.app.Person.Gender;
+import edu.uci.x46010.team.b.app.helper.CalendarUtils;
+import edu.uci.x46010.team.b.app.middle.Crowd;
+import edu.uci.x46010.team.b.app.middle.Person;
+import edu.uci.x46010.team.b.app.middle.Person.Gender;
 
 import junit.framework.TestCase;
 
