@@ -1,8 +1,5 @@
 package edu.uci.x46010.team.b.test.middle;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import edu.uci.x46010.team.b.app.helper.CalendarUtils;
 import edu.uci.x46010.team.b.app.middle.Crowd;
 import edu.uci.x46010.team.b.app.middle.Person;
@@ -15,20 +12,21 @@ public class CrowdTest extends TestCase
 	/**
 	 * Test that People objects can be added to a Crowd object.
 	 */
-	public void testAdd()
+	public Crowd testAdd()
 	{
 		Crowd testCrowd = new Crowd();
 		
-		GregorianCalendar testCalendar = new GregorianCalendar();
-		testCalendar.set(1999, Calendar.SEPTEMBER, 9);
+		// Try to add a person to the crowd.
+		Person testPerson = new Person();
+		int numberOfPeople = 5;
+
+		for (int count=0; count<numberOfPeople; count++)
+		{
+			testCrowd.add(testPerson);
+		}
+		assertEquals(numberOfPeople, testCrowd.size());
 		
-		Person p1 = new Person("Ninety", "Nine", Gender.MALE, "999-99-9999", testCalendar);
-		testCrowd.add(p1);
-		assertEquals(1, testCrowd.size());
-		
-		Person p2 = new Person("John", "Doe", Gender.MALE, "555-55-5555", testCalendar);
-		testCrowd.add(p2);	
-		assertEquals(2, testCrowd.size());
+		return testCrowd;		
 	}
 	
 	/**
@@ -36,15 +34,7 @@ public class CrowdTest extends TestCase
 	 */
 	public void testClear()
 	{
-		GregorianCalendar testCalendar = new GregorianCalendar();
-		testCalendar.set(1999, Calendar.SEPTEMBER, 9);
-		
-		Person p1 = new Person("Mister", "X", Gender.MALE, "999-99-9999", testCalendar);
-
-		Crowd testCrowd = new Crowd();
-		testCrowd.add(p1);
-		assertEquals(1, testCrowd.size());
-		
+		Crowd testCrowd = testAdd();
 		testCrowd.clear();
 		assertEquals(0, testCrowd.size());
 	}
