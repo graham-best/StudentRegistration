@@ -170,5 +170,5 @@ public class CalendarUtils
     public static GregorianCalendar createGregorianCalendar(String yearString, String monthString, String dayOfMonthString)
     {
     	return createGregorianCalendar(Integer.parseInt(yearString), monthString, Integer.parseInt(dayOfMonthString));
-    }    
+    }  
 }

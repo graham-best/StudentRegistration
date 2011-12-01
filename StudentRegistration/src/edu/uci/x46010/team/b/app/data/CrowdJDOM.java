@@ -45,20 +45,35 @@ public class CrowdJDOM
 			Document document = (Document) builder.build(xmlFile);
 			
 			// Get the root of the tree. For the crowd XML file, this should be <crowd>.
-			Element rootNode = document.getRootElement();
+			Element crowdNode = document.getRootElement();
 			
 			// Get a list of all of the <person> elements under the <crowd>.
 			@SuppressWarnings("unchecked")
-			List<Element> personList = rootNode.getChildren(CrowdTags.PERSON_TAG);
+			List<Element> elementList = crowdNode.getChildren(CrowdTags.PERSON_TAG);
 			
 			// Create a Crowd object as we've been successful parsing the XML elements.
 			crowd = new Crowd();
 			
 			// Go through each of the <person> elements found.
-			for (int index = 0; index < personList.size(); index++)
+			for (int index = 0; index < elementList.size(); index++)
 			{
 				// Get the next <person> in the XML file.
-				Element personNode = personList.get(index);
+				Element personNode = elementList.get(index);
+				
+				// Create a new person.
+				Person newPerson = new Person();
+				
+				// Copy the person's first name.
+				newPerson.setFirstName(personNode.getChildText(CrowdTags.FIRST_NAME_TAG));
+				
+				// Copy the person's last name.
+				newPerson.setLastName(personNode.getChildText(CrowdTags.LAST_NAME_TAG));				
+				
+				// Copy the person's gender.
+				newPerson.setGender(Gender.convertStringToGender(personNode.getChildText(CrowdTags.GENDER_TAG)));
+				
+				// Copy the person's Social Security Number.
+				newPerson.setSSN(personNode.getChildText(CrowdTags.SOCIAL_SECURITY_NUMBER_TAG));
 				
 				// Get the person's birth date.
 				GregorianCalendar birthDate;
@@ -66,13 +81,8 @@ public class CrowdJDOM
 						                                        personNode.getChildText(CrowdTags.BIRTH_MONTH_TAG),
 						                                        personNode.getChildText(CrowdTags.BIRTH_DAY_TAG));
 				
-				// Create a new person.
-				Person newPerson; 
-				newPerson =	new Person(personNode.getChildText(CrowdTags.FIRST_NAME_TAG),
-				                       personNode.getChildText(CrowdTags.LAST_NAME_TAG),
-				                       Gender.convertStringToGender(personNode.getChildText(CrowdTags.GENDER_TAG)),
-				                       personNode.getChildText(CrowdTags.SOCIAL_SECURITY_NUMBER_TAG),
-				                       birthDate);
+				// Copy the person's birth date.
+				newPerson.setBirthDate(birthDate);
 				
 				// Add the new person to the crowd.
 				crowd.add(newPerson);
@@ -103,10 +113,10 @@ public class CrowdJDOM
 		try
 		{
 			// Create the root node of the Document tree.
-			Element crowdElement = new Element(CrowdTags.CROWD_TAG);
+			Element crowdNode = new Element(CrowdTags.CROWD_TAG);
 	
 			// Build a JDOM Document from the XML file. Make the crowd the root element.
-			Document document = new Document (crowdElement);
+			Document document = new Document (crowdNode);
 			
 			// Go through the each person in the crowd.
 			for (Person person : crowd.getPersonList())
@@ -115,17 +125,17 @@ public class CrowdJDOM
 				GregorianCalendar birthDate = person.getBirthDate();
 				
 				// Copy the information from the Person object to the <person> element.
-				Element personElement = new Element(CrowdTags.PERSON_TAG);
-				personElement.addContent(new Element(CrowdTags.FIRST_NAME_TAG).setText(person.getFirstName()));
-				personElement.addContent(new Element(CrowdTags.LAST_NAME_TAG).setText(person.getLastName()));
-				personElement.addContent(new Element(CrowdTags.GENDER_TAG).setText(Gender.convertGenderToString(person.getGender())));
-				personElement.addContent(new Element(CrowdTags.SOCIAL_SECURITY_NUMBER_TAG).setText(person.getSSN()));
-				personElement.addContent(new Element(CrowdTags.BIRTH_YEAR_TAG).setText(CalendarUtils.convertToYearString(birthDate)));
-				personElement.addContent(new Element(CrowdTags.BIRTH_MONTH_TAG).setText(CalendarUtils.convertToMonthString(birthDate)));
-				personElement.addContent(new Element(CrowdTags.BIRTH_DAY_TAG).setText(CalendarUtils.convertToDayOfMonthString(birthDate)));
+				Element personNode = new Element(CrowdTags.PERSON_TAG);
+				personNode.addContent(new Element(CrowdTags.FIRST_NAME_TAG).setText(person.getFirstName()));
+				personNode.addContent(new Element(CrowdTags.LAST_NAME_TAG).setText(person.getLastName()));
+				personNode.addContent(new Element(CrowdTags.GENDER_TAG).setText(Gender.convertGenderToString(person.getGender())));
+				personNode.addContent(new Element(CrowdTags.SOCIAL_SECURITY_NUMBER_TAG).setText(person.getSSN()));
+				personNode.addContent(new Element(CrowdTags.BIRTH_YEAR_TAG).setText(CalendarUtils.convertToYearString(birthDate)));
+				personNode.addContent(new Element(CrowdTags.BIRTH_MONTH_TAG).setText(CalendarUtils.convertToMonthString(birthDate)));
+				personNode.addContent(new Element(CrowdTags.BIRTH_DAY_TAG).setText(CalendarUtils.convertToDayOfMonthString(birthDate)));
 			
 				// Add the <person> information to the document tree.
-				document.getRootElement().addContent(personElement);
+				document.getRootElement().addContent(personNode);
 			}
 			
 			// Create a class to write the XML data.
@@ -150,6 +160,7 @@ public class CrowdJDOM
 	 * @return The number of <person> elements that match the last name.
 	 * @throws Exception
 	 */
+	// TODO: Use this function as a basis to see how many students are enrolled in a course.
 	public int countLastName(String xmlFileName, String matchingLastName) throws Exception
 	{
 		int count = 0;

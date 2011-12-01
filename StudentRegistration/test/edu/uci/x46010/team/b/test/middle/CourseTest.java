@@ -68,11 +68,6 @@ public class CourseTest extends TestCase
 		
 		testCourse.setStartDate(testCalendar);
 		assertEquals(testCalendar, testCourse.getStartDate());
-	
-		testCourse.setStartDateYear(startDateYear);
-		testCourse.setStartDateMonth("February");
-		testCourse.setStartDateDayOfMonth(startDateDayOfMonth);
-		assertEquals(testCalendar, testCourse.getStartDate());
 	}
 	
 	/**
@@ -90,11 +85,6 @@ public class CourseTest extends TestCase
 		
 		testCourse.setEndDate(testCalendar);
 		assertEquals(testCalendar, testCourse.getEndDate());
-	
-		testCourse.setEndDateYear(endDateYear);
-		testCourse.setEndDateMonth("March");
-		testCourse.setEndDateDayOfMonth(endDateDayOfMonth);
-		assertEquals(testCalendar, testCourse.getEndDate());
 	}	
 	
 	/**
@@ -106,9 +96,6 @@ public class CourseTest extends TestCase
 		int dayOfWeek = Calendar.MONDAY;
 		testCourse.setDayOfWeek(dayOfWeek);
 		assertEquals(dayOfWeek, testCourse.getDayOfWeek());
-	
-		testCourse.setDayOfWeek("Tuesday");
-		assertEquals(Calendar.TUESDAY, testCourse.getDayOfWeek());		
 	}
 	
 	/**

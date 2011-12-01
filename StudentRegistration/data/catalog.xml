@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog>
 	<course>
-		<number>I&C SCI X402.35 </number>
+		<number>IC SCI X402.35</number>
 		<name>Introduction to Mobile Application Design and Development</name>
 		<description>Get an introduction to mobile application development, including market opportunities, challenges, and architectural models.</description>
 		<units>1.5</units>
@@ -21,7 +21,7 @@
 		<maximum_enrollment>30</maximum_enrollment>
 	</course>
 	<course>
-		<number>I&C SCI X402.38</number>
+		<number>IC SCI X402.38</number>
 		<name>Advanced Mobile Development for Apple iPhone and iPad</name>
 		<description>This advanced course focuses on more complex User Interface Design and Navigation concepts, the Core Data Model, Data Persistence in XML and SQLite database, programmatic handling of user configuration data and property lists.</description>
 		<units>1.5</units>
@@ -41,7 +41,7 @@
 		<maximum_enrollment>30</maximum_enrollment>
 	</course>
 	<course>
-		<number>I&C SCI X402.40</number>
+		<number>IC SCI X402.40</number>
 		<name>Application Development for Android Devices</name>
 		<description>This is a five week course which focuses on understanding Google's Android mobile device platform, its position in the mobile device/application market and developing applications for actual devices.</description>
 		<units>1.5</units>
@@ -61,9 +61,9 @@
 		<maximum_enrollment>30</maximum_enrollment>
 	</course>
 	<course>
-		<number>I&C SCI X402.41</number>
+		<number>IC SCI X402.41</number>
 		<name>Advanced Application Development for Android</name>
-		<description>This is an advanced five week course which continues from Application Development for Android (I&C SCI X402.38).</description>
+		<description>This is an advanced five week course which continues from Application Development for Android (IC SCI X402.38).</description>
 		<units>1.5</units>
 		<start_date_year>2012</start_date_year>
 		<start_date_month>January</start_date_month>
@@ -81,7 +81,7 @@
 		<maximum_enrollment>30</maximum_enrollment>
 	</course>
 	<course>
-		<number>I&C SCI X402.45</number>
+		<number>IC SCI X402.45</number>
 		<name>Application Development with Windows Phone 7</name>
 		<description>Windows Phone 7 is Microsoft's next generation mobile operating system. It promises to be an amazing mobile phone operating system given its great user interface and functionality, as well as its development platform.</description>
 		<units>1.5</units>
@@ -101,7 +101,7 @@
 		<maximum_enrollment>30</maximum_enrollment>
 	</course>
 	<course>
-		<number>I&C SCI X450.72</number>
+		<number>IC SCI X450.72</number>
 		<name>Writing Queries Using Microsoft SQL Server 2008</name>
 		<description>In this course students learn the concepts of relational databases.</description>
 		<units>2.5</units>
@@ -121,7 +121,7 @@
 		<maximum_enrollment>30</maximum_enrollment>
 	</course>
 	<course>
-		<number>I&C SCI X460.10</number>
+		<number>IC SCI X460.10</number>
 		<name>Java Programming I</name>
 		<description>Have introductory experience with Java or another object-oriented language? This course is for you!</description>
 		<units>3.0</units>

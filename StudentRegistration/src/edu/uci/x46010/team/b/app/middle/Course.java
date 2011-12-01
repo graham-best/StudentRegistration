@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import edu.uci.x46010.team.b.app.helper.CalendarUtils;
+import edu.uci.x46010.team.b.app.helper.SimpleTime;
 
 public class Course 
 {
@@ -15,8 +16,8 @@ public class Course
 	private GregorianCalendar startDate;
 	private GregorianCalendar endDate;
 	private int dayOfWeek;
-	private Calendar startTime;
-	private Calendar endTime;
+	private SimpleTime startTime;
+	private SimpleTime endTime;
 	private int maximumEnrollment;
 	
 	/**
@@ -34,8 +35,8 @@ public class Course
 		this.endDate = new GregorianCalendar();
 		
 		this.dayOfWeek = -1;
-		this.startTime = new GregorianCalendar();
-		this.endTime = new GregorianCalendar();
+		this.startTime = new SimpleTime();
+		this.endTime = new SimpleTime();
 	}
 
 	/** 
@@ -127,33 +128,6 @@ public class Course
 	{
 		this.startDate = startDate;
 	}
-
-	/** 
-	 * Set the starting year of the course
-	 * @param startDateYear The starting year of the course.
-	 */
-	public void setStartDateYear(int startDateYear)
-	{
-		this.startDate.set(Calendar.YEAR, startDateYear);
-	}
-
-	/** 
-	 * Set the starting month of the course.
-	 * @param startDateMonth The starting month of the course.
-	 */	
-	public void setStartDateMonth(String startDateMonth)
-	{
-		this.startDate.set(Calendar.MONTH, CalendarUtils.convertToMonthValue(startDateMonth));
-	}
-	
-	/**
-	 * Set the starting day of the month for the course.
-	 * @param startDateDayOfMonth The starting day of the month for the course.
-	 */
-	public void setStartDateDayOfMonth(int startDateDayOfMonth)
-	{
-		this.startDate.set(Calendar.DAY_OF_MONTH, startDateDayOfMonth);
-	}
 	
 	/** 
 	 * Get the ending date of the course.
@@ -171,33 +145,6 @@ public class Course
 	public void setEndDate(GregorianCalendar endDate) 
 	{
 		this.endDate = endDate;
-	}
-
-	/** 
-	 * Set the ending year of the course
-	 * @param endDateYear The ending year of the course.
-	 */
-	public void setEndDateYear(int endDateYear)
-	{
-		this.endDate.set(Calendar.YEAR, endDateYear);
-	}
-
-	/** 
-	 * Set the ending month of the course.
-	 * @param endDateMonth The ending year of the course.
-	 */	
-	public void setEndDateMonth(String endDateMonth)
-	{
-		this.endDate.set(Calendar.MONTH, CalendarUtils.convertToMonthValue(endDateMonth));
-	}
-	
-	/**
-	 * Set the ending day of the month for the course.
-	 * @param endDateDayOfMonth The ending day of the month for the course.
-	 */
-	public void setEndDateDayOfMonth(int endDateDayOfMonth)
-	{
-		this.endDate.set(Calendar.DAY_OF_MONTH, endDateDayOfMonth);
 	}
 
 	/** 
@@ -219,19 +166,10 @@ public class Course
 	}
 
 	/** 
-	 * Set the day of the week when the course is taught.
-	 * @param dayOfWeek The day of the week when the course is taught.
-	 */
-	public void setDayOfWeek(String dayOfWeek) 
-	{
-		this.dayOfWeek = CalendarUtils.convertToDayOfWeekValue(dayOfWeek);
-	}	
-	
-	/** 
 	 * Get the start time of when the class is taught.
 	 * @return The start time of when the class is taught.
 	 */
-	public Calendar getStartTime() 
+	public SimpleTime getStartTime() 
 	{
 		return startTime;
 	}
@@ -240,21 +178,16 @@ public class Course
 	 * Set the start time of when the class is taught.
 	 * @param startTime Set the start time of when the class is taught.
 	 */
-	public void setStartTime(GregorianCalendar startTime)
+	public void setStartTime(SimpleTime startTime)
 	{
 		this.startTime = startTime;
 	}
 
-	public void setStartTimeHour(int hour)
-	{
-		
-	}
-	
 	/** 
 	 * Get the ending time of when the class is taught.
 	 * @return The ending time of when the class is taught.
 	 */
-	public Calendar getEndTime() 
+	public SimpleTime getEndTime() 
 	{
 		return endTime;
 	}
@@ -263,7 +196,7 @@ public class Course
 	 * Set the ending time of when the class is taught.
 	 * @param endTime The ending time of when the class is taught.
 	 */
-	public void setEndTime(GregorianCalendar endTime) 
+	public void setEndTime(SimpleTime endTime) 
 	{
 		this.endTime = endTime;
 	}
@@ -286,6 +219,9 @@ public class Course
 		this.maximumEnrollment = maximumEnrollment;
 	}
 	
+	/**
+	 * Copy the Course information to a String
+	 */
 	public String toString()
 	{
         String courseString;
@@ -293,9 +229,21 @@ public class Course
         courseString += CalendarUtils.convertToDateString(this.startDate);
         courseString += " Ending Date: " + CalendarUtils.convertToDateString(this.endDate) + " Classes on: ";
         courseString += CalendarUtils.convertToDayOfWeekString(this.dayOfWeek) + " "; 
-        courseString += CalendarUtils.convertToTimeString(this.startTime) + " - ";
-        courseString += CalendarUtils.convertToTimeString(this.endTime) + " Units: " + this.units;
+        courseString += this.startTime.toString() + " - " + this.endTime.toString();
+        courseString += " Units: " + this.units;
         
         return courseString;
+	}
+	
+	/**
+	 * Check to see if there is a schedule conflict between two course
+	 * @param secondCourse The Course object to compare against
+	 * @return true if there is a conflict, false if there is not.
+	 */
+	public boolean checkForScheduleConflict(Course secondCourse)
+	{
+		// TODO: Add code to check for a schedule conflict.
+		
+		return false;
 	}
 }

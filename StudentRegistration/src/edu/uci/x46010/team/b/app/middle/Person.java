@@ -286,6 +286,7 @@ public class Person implements Comparable<Object>
 	/**
 	 * Compare the age of two people.
 	 */
+	// TODO: Move age into its own Comparator function, and compare all properties of two Person objects.
 	public int compareTo(Object anotherPerson) throws ClassCastException 
 	{
 	    if (!(anotherPerson instanceof Person))
