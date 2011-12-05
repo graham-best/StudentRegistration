@@ -60,5 +60,20 @@ public class Catalog
 		}
 		
 		return output;
-	}	
+	}
+	
+	
+	/**
+	 * retrieves the course at the specified index
+	 * @param index must be 0 to size() - 1
+	 * @return the Course object within the collecction
+	 */
+	public Course getCourse(int index) {
+		if (index < 0 || index >= size())
+			return null;
+		
+		return courseList.get(index);
+		
+	}
+
 }

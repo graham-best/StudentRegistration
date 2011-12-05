@@ -148,4 +148,22 @@ public class Crowd
 	{
 		return StringUtils.countMatches(this.getAllLastNames(), lastName);
 	}
+	
+	
+	/**
+	 * Find the person with the specified Social Security Number
+	 * @param SSN
+	 * @return the person with the SSN.  null if not found
+	 */
+	public Person findPersonWithSSN(String SSN) {
+		
+		for (Person person : personList) {
+			if (person.getSSN().equals(SSN))
+				return person;
+		}
+		
+		// if we get here, the SSN was not found in the list of people
+		return null;
+		
+	}
 }
