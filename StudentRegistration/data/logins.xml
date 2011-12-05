@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logins>
+  <login>
+    <password>A. J.</password>
+    <login_ID>123-45-6789</login_ID>
+  </login>
+  <login>
+    <password>Hong</password>
+    <login_ID>234-56-7890</login_ID>
+  </login>
+  <login>
+    <password>Jane</password>
+    <login_ID>888-88-8888</login_ID>
+  </login>
+  <login>
+    <password>Ann</password>
+    <login_ID>987-65-4321</login_ID>
+  </login>
+  <login>
+    <password>Joe</password>
+    <login_ID>555-55-5555</login_ID>
+  </login>
+  <login>
+    <password>John</password>
+    <login_ID>999-99-9999</login_ID>
+  </login>
+</logins>
