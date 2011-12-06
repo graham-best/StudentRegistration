@@ -1,6 +1,6 @@
 package edu.uci.x46010.team.b.app.userInterface;
 
-import edu.uci.x46010.team.b.app.middle.Login;
+
 import edu.uci.x46010.team.b.app.middle.LoginList;
 import java.util.Scanner;
 
