@@ -4,9 +4,6 @@ import edu.uci.x46010.team.b.app.data.*;
 import edu.uci.x46010.team.b.app.middle.*;
 import edu.uci.x46010.team.b.app.userInterface.*;
 
-
-
-
 public class StudentRegistration 
 {
 	public static void main(String[] args) {
@@ -16,7 +13,7 @@ public class StudentRegistration
 		Catalog catalog = null;
 		
 		try {
-			catalog = catalogJDOM.readXMLFile("C:\\Users\\Dan\\Documents\\Java\\Workspace\\StudentRegistration\\StudentRegistration\\data\\catalog.xml");
+			catalog = catalogJDOM.readXMLFile("C:\\Users\\Our\\JavaCourse\\StudentRegistration\\StudentRegistration\\data\\catalog.xml");
 		} catch (Exception e) {
 			
 			e.printStackTrace();
@@ -36,15 +33,13 @@ public class StudentRegistration
 			System.out.println("course = " + course.getName());
 			
 		}
-		
-
-		
+	
 		// read the people (students) from the XML file
 		CrowdJDOM crowdJDOM = new CrowdJDOM();
 		Crowd crowd = null;
 		
 		try {
-			crowd = crowdJDOM.readXMLFile("C:\\Users\\Dan\\Documents\\Java\\Workspace\\StudentRegistration\\StudentRegistration\\data\\crowd.xml");
+			crowd = crowdJDOM.readXMLFile("C:\\Users\\Our\\JavaCourse\\StudentRegistration\\StudentRegistration\\data\\crowd.xml");
 		} catch (Exception e) {
 			
 			e.printStackTrace();
@@ -60,7 +55,7 @@ public class StudentRegistration
 		LoginList loginList = null;
 		
 		try {
-			loginList = loginJDOM.readXMLFile("C:\\Users\\Dan\\Documents\\Java\\Workspace\\StudentRegistration\\StudentRegistration\\data\\logins.xml");
+			loginList = loginJDOM.readXMLFile("C:\\Users\\Our\\JavaCourse\\StudentRegistration\\StudentRegistration\\data\\logins.xml");
 		} catch (Exception e) {			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -69,6 +64,7 @@ public class StudentRegistration
 			System.out.println("Could not read list of log in IDs and passwords, exiting program");
 			return;			
 		}
+		
 		
 		// TODO:  read in the Enrollment collection
 		
@@ -86,9 +82,25 @@ public class StudentRegistration
 		}
 		
 		System.out.println("Student " + person.getFullName() + " logged in");
-		
+
+		// read the main menu options from the XML file
+		MenuOptionJDOM mainMenuJDOM = new MenuOptionJDOM();
+		MenuOptionsList mainMenuList = new MenuOptionsList();
+
+		try {
+			mainMenuList = mainMenuJDOM.readXMLFile("C:\\Users\\Our\\JavaCourse\\StudentRegistration\\StudentRegistration\\data\\mainmenu.xml");
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+
+		if (mainMenuList == null) {
+			System.out.println("Could not read mainmenu entries, exiting program");
+			return;
+		}
+
 		//main menu
-		MainMenuUI.mainMenu(person);
+		MainMenuUI.mainMenu(person, mainMenuList);
 		
 		//logout
 		

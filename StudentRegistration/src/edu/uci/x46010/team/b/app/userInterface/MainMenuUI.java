@@ -1,14 +1,16 @@
 package edu.uci.x46010.team.b.app.userInterface;
 
 import java.util.Scanner;
-
+import edu.uci.x46010.team.b.app.middle.MenuOptionsList;
 import edu.uci.x46010.team.b.app.middle.Person;
 
 public class MainMenuUI 
 {
-	
+	public static void DisplayMainMenu() {
+	}
+
 	// Display Main Menu
-	public static void mainMenu(Person p) {
+	public static void mainMenu(Person p, MenuOptionsList mainMenuList) {
 		
 		while( true )
 		{
@@ -16,12 +18,7 @@ public class MainMenuUI
 			System.out.println("Student Name: " + p.getFullName());
 			System.out.println("Student ID:   " + p.getSSN());
 			System.out.println();
-			System.out.println("1) View All Courses");
-			System.out.println("2) view Enrolled Courses");
-			System.out.println("3) Add Course");
-			System.out.println("4) Drop Course");
-			System.out.println("5) Logout");
-
+			mainMenuList.listMenu();
 			System.out.print("\nEnter selection: ");
 			Scanner inputScanner = new Scanner(System.in);
 			int opt = inputScanner.nextInt();

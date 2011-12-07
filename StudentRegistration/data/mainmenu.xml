@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menuEntries>
+  <menuItemEntry>
+    <menuSequence>1</menuSequence>
+    <menuOptionName>View All Courses</menuOptionName>
+  </menuItemEntry>
+  <menuItemEntry>
+    <menuSequence>2</menuSequence>
+    <menuOptionName>View Enrolled Courses</menuOptionName>
+  </menuItemEntry>
+  <menuItemEntry>
+    <menuSequence>3</menuSequence>
+    <menuOptionName>Add Course</menuOptionName>
+  </menuItemEntry>
+  <menuItemEntry>
+    <menuSequence>4</menuSequence>
+    <menuOptionName>Drop Course</menuOptionName>
+  </menuItemEntry>
+  <menuItemEntry>
+    <menuSequence>5</menuSequence>
+    <menuOptionName>Logout</menuOptionName>
+  </menuItemEntry>
+</menuEntries>
