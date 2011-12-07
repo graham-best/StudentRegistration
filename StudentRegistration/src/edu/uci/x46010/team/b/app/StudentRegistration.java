@@ -87,7 +87,11 @@ public class StudentRegistration
 		
 		System.out.println("Student " + person.getFullName() + " logged in");
 		
-			
+		//main menu
+		MainMenuUI.mainMenu(person);
+		
+		//logout
+		
 	}
 	
 	
